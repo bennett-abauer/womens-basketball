@@ -1,10 +1,12 @@
 import React from 'react';
+import RecruitmentPage from "./pages/recruitmentPage/recruitmentPage.component";
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <p>hello world</p>
+      <RecruitmentPage />
     </div>
   );
 }

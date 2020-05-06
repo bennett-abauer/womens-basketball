@@ -1,9 +1,33 @@
 .recruitment{
     display: flex;
     flex-direction: column;
-    width: 380px;
+    align-items: center;
+    width: 100%;
 
     .title {
         margin: 10px 0;
     }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0 40px;
+    padding: 10px;
+}
+
+.firstName { grid-area: 1 / 1 / 2 / 2; }
+.lastName { grid-area: 1 / 2 / 2 / 3; }
+.address { grid-area: 2 / 1 / 2 / 3; }
+.addressLine2 { grid-area: 3 / 1 / 3 / 3; }
+.phoneNumber { grid-area: 4 / 1 / 5 / 2; }
+.email { grid-area: 4 / 2 / 5 / 3; }
+
+@media only screen and (max-width: 500px) {
+    .firstName { grid-area: 1; }
+    .lastName { grid-area: 2; }
+    .address { grid-area: 3; }
+    .addressLine2 { grid-area: 4; }
+    .phoneNumber { grid-area: 5; }
+    .email { grid-area: 6; }
 }

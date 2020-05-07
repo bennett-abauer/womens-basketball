@@ -63,6 +63,7 @@
 .notes { grid-area: 12 / span 3 / 13; }
 
 @media only screen and (max-width: 500px) {
+    
     .firstName { grid-area: 1; }
     .lastName { grid-area: 2; }
     .address { grid-area: 3; }

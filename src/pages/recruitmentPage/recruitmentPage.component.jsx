@@ -1,7 +1,5 @@
 import React from "react";
 import RecruitmentForm from "../../components/recruitmentForm/recruitmentForm.component";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import clsx from 'clsx';
 
 import "./recruitmentPage.styles.scss";
 

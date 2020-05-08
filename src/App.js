@@ -4,8 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import './App.css';
 
 import Header from "./components/header/header.component";
-import HomePage from "./pages/homePage/homePage.component";
-import RecruitmentPage from "./pages/recruitmentPage/recruitmentPage.component";
+import HomePage from "./pages/homepage/homepage.component";
+import RecruitmentPage from "./pages/recruitment-page/recruitment-page.component";
 
 class App extends React.Component { 
   constructor() {
@@ -20,7 +20,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={ HomePage } />
-          <Route path="/recruitmentPage" component={ RecruitmentPage } />
+          <Route path="/recruitment-page" component={ RecruitmentPage } />
         </Switch>
       </div>
     );

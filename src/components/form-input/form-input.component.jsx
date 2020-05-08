@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./recruitmentForm.styles.scss";
+import "./form-input.styles.scss";
 
-const RecruitmentForm = ({ handleChange, label, ...otherProps }) => (
+const FormInput = ({ handleChange, label, ...otherProps }) => (
     <div className="group">
         <input className="form-input" onChange={ handleChange } { ...otherProps } />
         { label ? (
@@ -14,4 +14,4 @@ const RecruitmentForm = ({ handleChange, label, ...otherProps }) => (
     </div>
 )
 
-export default RecruitmentForm;
+export default FormInput;

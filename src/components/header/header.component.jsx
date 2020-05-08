@@ -14,10 +14,10 @@ const Header = () => (
             <Link className="option" to="/">
                 HOME
             </Link>
-            <Link className="option" to="/recruitmentPage">
+            <Link className="option" to="/recruitment-page">
                 APPLY NOW
             </Link>
-            <Link className="option" to="/recruitView">
+            <Link className="option" to="/recruit-view">
                 VIEW PROSPECTS
             </Link>
         </div>

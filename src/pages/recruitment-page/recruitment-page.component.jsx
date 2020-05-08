@@ -1,7 +1,7 @@
 import React from "react";
-import RecruitmentForm from "../../components/recruitmentForm/recruitmentForm.component";
+import FormInput from "../../components/form-input/form-input.component";
 
-import "./recruitmentPage.styles.scss";
+import "./recruitment-page.styles.scss";
 
 class RecruitmentPage extends React.Component {
     constructor() {
@@ -57,7 +57,7 @@ class RecruitmentPage extends React.Component {
                 <span>Please fill out the form below to the best of your knowledge</span>
                 <div className="two-column-grid-container">
                     <form className="firstName">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="firstName"
                             value={ firstName }
@@ -66,7 +66,7 @@ class RecruitmentPage extends React.Component {
                             required />
                     </form>
                     <form className="lastName">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="lastName"
                             value={ lastName }
@@ -75,7 +75,7 @@ class RecruitmentPage extends React.Component {
                             required />
                     </form>
                     <form className="address">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="address"
                             value={ address }
@@ -84,7 +84,7 @@ class RecruitmentPage extends React.Component {
                             required />
                     </form>
                     <form className="addressLine2">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="addressLine2"
                             value={ addressLine2 }
@@ -93,7 +93,7 @@ class RecruitmentPage extends React.Component {
                             required />
                     </form>
                     <form className="phoneNumber">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="phoneNumber"
                             value={ phoneNumber }
@@ -102,7 +102,7 @@ class RecruitmentPage extends React.Component {
                             required />
                     </form>
                     <form className="email">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="email"
                             value={ email }
@@ -111,7 +111,7 @@ class RecruitmentPage extends React.Component {
                             required />
                     </form>
                     <form className="height-feet">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="heightFeet"
                             value={ heightFeet }
@@ -119,7 +119,7 @@ class RecruitmentPage extends React.Component {
                             label="Height: Feet" />
                     </form>
                     <form className="height-inches">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="heightInches"
                             value={ heightInches }
@@ -127,7 +127,7 @@ class RecruitmentPage extends React.Component {
                             label="Height: Inches" />
                     </form>
                     <form className="off-rebounds">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="offRebounds"
                             value={ offRebounds }
@@ -135,7 +135,7 @@ class RecruitmentPage extends React.Component {
                             label="Offensive Rebounds" />
                     </form>
                     <form className="def-rebounds">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="defRebounds"
                             value={ defRebounds }
@@ -145,7 +145,7 @@ class RecruitmentPage extends React.Component {
                 </div>
                 <div className="three-column-grid-container">
                     <form className="free-throw-prcnt">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="freeThrowPrcnt"
                             value={ freeThrowPrcnt }
@@ -153,7 +153,7 @@ class RecruitmentPage extends React.Component {
                             label="Free Throw Percentage" />
                     </form>
                     <form className="three-point-prcnt">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="threePointPrcnt"
                             value={ threePointPrcnt }
@@ -161,7 +161,7 @@ class RecruitmentPage extends React.Component {
                             label="Three Point Percentage" />
                     </form>
                     <form className="two-point-prcnt">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="twoPointPrcnt"
                             value={ twoPointPrcnt }
@@ -171,7 +171,7 @@ class RecruitmentPage extends React.Component {
                 </div>
                 <div className="four-column-grid-container">
                     <form className="assists">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="assists"
                             value={ assists }
@@ -179,7 +179,7 @@ class RecruitmentPage extends React.Component {
                             label="Assists" />
                     </form>
                     <form className="turnovers">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="turnovers"
                             value={ turnovers }
@@ -187,7 +187,7 @@ class RecruitmentPage extends React.Component {
                             label="Turnovers" />
                     </form>
                     <form className="steals">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="steals"
                             value={ steals }
@@ -195,7 +195,7 @@ class RecruitmentPage extends React.Component {
                             label="Steals" />
                     </form>
                     <form className="blocks">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="blocks"
                             value={ blocks }
@@ -203,7 +203,7 @@ class RecruitmentPage extends React.Component {
                             label="Blocks" />
                     </form>
                     <form className="games-played">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="gamesPlayed"
                             value={ gamesPlayed }
@@ -211,7 +211,7 @@ class RecruitmentPage extends React.Component {
                             label="Games Played" />
                     </form>
                     <form className="games-started">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="gamesStarted"
                             value={ gamesStarted }
@@ -219,7 +219,7 @@ class RecruitmentPage extends React.Component {
                             label="Games Started" />
                     </form>
                     <form className="minutes-played">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="minutesPlayed"
                             value={ minutesPlayed }
@@ -227,7 +227,7 @@ class RecruitmentPage extends React.Component {
                             label="Minutes Played" />
                     </form>
                     <form className="personal-fouls">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="personalFouls"
                             value={ personalFouls }
@@ -235,7 +235,7 @@ class RecruitmentPage extends React.Component {
                             label="Personal Fouls" />
                     </form>
                     <form className="grad-year">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="gradYear"
                             value={ gradYear }
@@ -243,7 +243,7 @@ class RecruitmentPage extends React.Component {
                             label="Graduation Year" />
                     </form>
                     <form className="act-score">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="actScore"
                             value={ actScore }
@@ -251,7 +251,7 @@ class RecruitmentPage extends React.Component {
                             label="ACT Score" />
                     </form>
                     <form className="gpa">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="gpa"
                             value={ gpa }
@@ -259,7 +259,7 @@ class RecruitmentPage extends React.Component {
                             label="GPA" />
                     </form>
                     <form className="school-name">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="schoolName"
                             value={ schoolName }
@@ -269,7 +269,7 @@ class RecruitmentPage extends React.Component {
                 </div>
                 <div className="three-column-grid-container">
                 <form className="position">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="position"
                             value={ position }
@@ -277,7 +277,7 @@ class RecruitmentPage extends React.Component {
                             label="Position" />
                     </form>
                     <form className="team-level">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="teamLevel"
                             value={ teamLevel }
@@ -285,7 +285,7 @@ class RecruitmentPage extends React.Component {
                             label="Which Level" />
                     </form>
                     <form className="current-status">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="currentStatus"
                             value={ currentStatus }
@@ -293,7 +293,7 @@ class RecruitmentPage extends React.Component {
                             label="Current Recruitment Status" />
                     </form>
                     <form className="notes">
-                        <RecruitmentForm
+                        <FormInput
                             type="text"
                             name="notes"
                             value={ notes }

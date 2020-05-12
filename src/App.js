@@ -6,6 +6,7 @@ import './App.css';
 import Header from "./components/header/header.component";
 import HomePage from "./pages/homepage/homepage.component";
 import RecruitmentPage from "./pages/recruitment-page/recruitment-page.component";
+import RecruitView from "./pages/recruit-view/recruit-view.component";
 import CoachSignIn from "./pages/coach-sign-in/coach-sign-in.component";
 
 import { auth } from "./firebase/firebase.utils";
@@ -38,6 +39,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={ HomePage } />
           <Route path="/recruitment-page" component={ RecruitmentPage } />
+          <Route path="/recruit-view" component={ RecruitView } />
           <Route path="/coach-sign-in" component={ CoachSignIn } />
         </Switch>
       </div>

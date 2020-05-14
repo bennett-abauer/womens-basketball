@@ -8,7 +8,7 @@ import { ReactComponent as Logo } from "../../assets/Doane-Tigers-logo.svg";
 import "./header.styles.scss";
 
 const Header = ({ currentUser }) => (
-    <div className="header">
+    <div className="custom-header">
         <Link className="logo-container" to="/">
             <Logo className="logo" />
         </Link>

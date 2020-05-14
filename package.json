@@ -14,6 +14,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
     "react-tab-view": "^1.1.1",
+    "react-table": "^7.0.5",
     "react-table-view": "^1.1.1"
   },
   "scripts": {

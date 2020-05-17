@@ -29,6 +29,15 @@ def all_info():
                     "r.act_score, ",
                     "r.gpa, ",
                     "st.status, ",
-                    "r.notes"]
+                    "r.notes, ",
+                    "s.school_name"]
+    columns_string = "".join(columns_list)
+    return columns_string
+
+def school_info():
+    columns_list = ["s.school_name, ",
+                    "s.school_address, ",
+                    "s.school_phone_number, ",
+                    "s.school_website"]
     columns_string = "".join(columns_list)
     return columns_string

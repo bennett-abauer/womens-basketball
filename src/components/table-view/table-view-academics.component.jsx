@@ -10,6 +10,7 @@ const AcademicsTable = ({ cellInfo }) => (
             <th>Graduation Year</th>
             <th>ACT Score</th>
             <th>GPA</th>
+            <th>School Name</th>
         </tr>
         {
             cellInfo.map(cell => (
@@ -19,6 +20,7 @@ const AcademicsTable = ({ cellInfo }) => (
                     <td>{ cell.grad_year }</td>
                     <td>{ cell.act_score }</td>
                     <td>{ cell.gpa }</td>
+                    <td>{ cell.school_name }</td>
                 </tr>
             ))
         }

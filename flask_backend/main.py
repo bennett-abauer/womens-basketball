@@ -6,7 +6,7 @@ from common import database_access
 app = Flask(__name__, template_folder="../build", static_folder="../build/static")
 
 app.config["SECRET_KEY"] = "super secret key"
-app.config["SITE"] = "http://0.0.0.0:5000/"
+app.config["SITE"] = "http://127.0.0.1:5000/"
 app.config["DEBUG"] = True
 
 @app.route("/", defaults={"path": ""})
@@ -18,6 +18,10 @@ def catch_all(path):
 @app.route("/viewRecruits", methods=["POST"])
 def viewRecruits():
     return database_access.all_recruit_info()
+
+@app.route("/schoolTableView", methods=["POST"])
+def schoolTableView():
+    return database_access.school_info()
 
 if __name__ == "__main__":
 #    viewRecruits()

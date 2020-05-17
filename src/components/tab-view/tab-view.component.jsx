@@ -4,6 +4,7 @@ import axios from "axios";
 import RecruitTable from "../table-view/table-view-recruits.component";
 import StatsTable from "../table-view/table-view-stats.component";
 import AcademicsTable from "../table-view/table-view-academics.component";
+import SchoolsTable from "../table-view/table-view-school-info.component";
 
 
 import "./tab-view.styles.scss";
@@ -11,29 +12,33 @@ import "./tab-view.styles.scss";
 const headers = ["Recruits", "Stats", "Academics", "School Info"]
 
 class TabView extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = {
-            allRecruitData: []
+            allRecruitData: [],
+            schoolInfo: []
         }
     }
 
-    componentDidMount() {
-        axios
-        .post("/viewRecruits")
-        .then(response => {
-            this.setState({
-                allRecruitData: response.data
-            })
-        })
-        .catch((error) => {
-            console.log(error);
+    componentWillMount() {
+        let viewRecruits = "/viewRecruits"
+        let schoolInfo = "/schoolTableView"
+
+        const requestOne = axios.post(viewRecruits);
+        const requestTwo = axios.post(schoolInfo);
+
+        axios.all([requestOne, requestTwo]).then(axios.spread((...responses) => {
+            this.setState({ allRecruitData: responses[0].data })
+            this.setState({ schoolInfo: responses[1].data })
+        })).catch(errors => {
+            console.log(errors)
         });
     }
 
     componentDidUpdate() {
-        console.log(this.state.allRecruitData)
+        console.log(this.state.allRecruitData);
+        console.log(this.state.schoolInfo);
     }
 
     render() {
@@ -50,9 +55,7 @@ class TabView extends React.Component {
                         <AcademicsTable cellInfo={ this.state.allRecruitData } />
                     </Tab>
                     <Tab>
-                        <div>
-                            <p>School info tab</p>
-                        </div>
+                        <SchoolsTable cellInfo={ this.state.schoolInfo }/>
                     </Tab>
                 </Tabs>
             </div>

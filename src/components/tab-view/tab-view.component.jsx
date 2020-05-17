@@ -1,18 +1,39 @@
 import React from "react";
 import { Tabs, Tab } from "react-tab-view";
+import axios from "axios";
 import RecruitTable from "../table-view/table-view-recruits.component";
+import StatsTable from "../table-view/table-view-stats.component";
+import AcademicsTable from "../table-view/table-view-academics.component";
+
 
 import "./tab-view.styles.scss";
 
 const headers = ["Recruits", "Stats", "Academics", "School Info"]
 
 class TabView extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
-            query: ""
+            allRecruitData: []
         }
+    }
+
+    componentDidMount() {
+        axios
+        .post("/viewRecruits")
+        .then(response => {
+            this.setState({
+                allRecruitData: response.data
+            })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+
+    componentDidUpdate() {
+        console.log(this.state.allRecruitData)
     }
 
     render() {
@@ -20,19 +41,13 @@ class TabView extends React.Component {
             <div>
                 <Tabs headers={ headers }>
                     <Tab>
-                        <div>
-                            <RecruitTable />
-                        </div>
+                        <RecruitTable cellInfo={ this.state.allRecruitData } />
                     </Tab>
                     <Tab>
-                        <div>
-                            <p>Stats tab</p>
-                        </div>
+                        <StatsTable cellInfo={ this.state.allRecruitData } />
                     </Tab>
                     <Tab>
-                        <div>
-                            <p>Academics tab</p>
-                        </div>
+                        <AcademicsTable cellInfo={ this.state.allRecruitData } />
                     </Tab>
                     <Tab>
                         <div>

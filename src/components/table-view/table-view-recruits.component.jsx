@@ -1,56 +1,32 @@
 import React from "react";
-import axios from "axios";
 
 import "./table-view.styles.scss";
 
-class RecruitTable extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            recruitData: []
-        }
-    }
-
-    componentDidMount() {
-        axios
-        .post("/viewRecruits")
-        .then(response => response.data).then(data => {
-            this.setState({ recruitData: data })
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    }
-
-    componentDidUpdate() {
-        console.log(this.state.recruitData);
-    }
-
-    render() {
-
-        return(
-            <table>
+const RecruitTable = ({ cellInfo }) => (
+    <table>
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Current Status</th>
+            <th>Notes</th>
+        </tr>
+        {
+            cellInfo.map(cell => (
                 <tr>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Address</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
+                    <td>{ cell.last_name }</td>
+                    <td>{ cell.first_name }</td>
+                    <td>{ cell.address }</td>
+                    <td>{ cell.phone_number }</td>
+                    <td>{ cell.email }</td>
+                    <td>{ cell.status }</td>
+                    <td>{ cell.notes }</td>
                 </tr>
-                { this.state.recruitData.map(recruit => {
-                    return (
-                    <tr>
-                        <td>{ recruit.last_name }</td>
-                        <td>{ recruit.first_name }</td>
-                        <td>{ recruit.address }</td>
-                        <td>{ recruit.phone_number }</td>
-                        <td>{ recruit.email }</td>
-                    </tr>
-                )})}
-            </table>
-        );
-    }
-}
+            ))
+        }
+    </table>
+);
 
 export default RecruitTable;

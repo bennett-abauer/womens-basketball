@@ -53,8 +53,8 @@ class RecruitmentPage extends React.Component {
     render() {
         const { lastName, firstName, address, addressLine2, phoneNumber, email, heightFeet, heightInches,
                 offRebounds, defRebounds, freeThrowPrcnt, threePointPrcnt, twoPointPrcnt, assists, turnovers,
-                steals, blocks, gamesPlayed, gamesStarted, minutesPlayed, personalFouls, position,
-                teamLevel, gradYear, actScore, gpa, schoolName, currentStatus, notes, showStats, showAcademics } = this.state;
+                steals, blocks, gamesPlayed, gamesStarted, minutesPlayed, personalFouls,
+                gradYear, actScore, gpa, schoolName, showStats, showAcademics } = this.state;
         return (
             <div>
                 <div className="recruitment">

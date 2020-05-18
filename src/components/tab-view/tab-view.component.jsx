@@ -1,66 +1,62 @@
 import React from "react";
 import { Tabs, Tab } from "react-tab-view";
-import axios from "axios";
+
 import RecruitTable from "../table-view/table-view-recruits.component";
 import StatsTable from "../table-view/table-view-stats.component";
 import AcademicsTable from "../table-view/table-view-academics.component";
 import SchoolsTable from "../table-view/table-view-school-info.component";
 
-
+import "../table-view/table-view.styles.scss";
 import "./tab-view.styles.scss";
 
-const headers = ["Recruits", "Stats", "Academics", "School Info"]
+const headers = ["RECRUITS", "STATS", "ACADEMICS", "SCHOOL INFO"]
 
-class TabView extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            allRecruitData: [],
-            schoolInfo: []
-        }
-    }
-
-    componentWillMount() {
-        let viewRecruits = "/viewRecruits"
-        let schoolInfo = "/schoolTableView"
-
-        const requestOne = axios.post(viewRecruits);
-        const requestTwo = axios.post(schoolInfo);
-
-        axios.all([requestOne, requestTwo]).then(axios.spread((...responses) => {
-            this.setState({ allRecruitData: responses[0].data })
-            this.setState({ schoolInfo: responses[1].data })
-        })).catch(errors => {
-            console.log(errors)
-        });
-    }
-
-    componentDidUpdate() {
-        console.log(this.state.allRecruitData);
-        console.log(this.state.schoolInfo);
-    }
-
-    render() {
-        return(
-            <div>
-                <Tabs headers={ headers }>
-                    <Tab>
-                        <RecruitTable cellInfo={ this.state.allRecruitData } />
-                    </Tab>
-                    <Tab>
-                        <StatsTable cellInfo={ this.state.allRecruitData } />
-                    </Tab>
-                    <Tab>
-                        <AcademicsTable cellInfo={ this.state.allRecruitData } />
-                    </Tab>
-                    <Tab>
-                        <SchoolsTable cellInfo={ this.state.schoolInfo }/>
-                    </Tab>
-                </Tabs>
+const TabView = ({ handleChange, recruits, schools }) => (
+    <Tabs className="tabs" headers={ headers }>
+        <Tab className="tab-view">
+            <div className="table">
+                <table>
+                    <tr>
+                        <th>Select</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Current Status</th>
+                        <th>Notes</th>
+                    </tr>
+                        {
+                            recruits.map(cell => (
+                                <tr>
+                                    <td>
+                                        <input type="checkbox"
+                                               value={ cell.recruit_id }
+                                               onChange={ handleChange } />
+                                    </td>
+                                    <td>{ cell.last_name }</td>
+                                    <td>{ cell.first_name }</td>
+                                    <td>{ cell.address }</td>
+                                    <td>{ cell.phone_number }</td>
+                                    <td>{ cell.email }</td>
+                                    <td>{ cell.status }</td>
+                                    <td>{ cell.notes }</td>
+                                </tr>
+                            ))
+                        }
+                </table>
             </div>
-        )
-    }
-}
+        </Tab>
+        <Tab className="tab-view">
+            <StatsTable cellInfo={ recruits } />
+        </Tab>
+        <Tab className="tab-view">
+            <AcademicsTable cellInfo={ recruits } />
+        </Tab>
+        <Tab className="tab-view">
+            <SchoolsTable cellInfo={ schools }/>
+        </Tab>
+    </Tabs>
+)
 
 export default TabView;

@@ -20,10 +20,6 @@
     color: white;
 }
 
-.import-label {
-    padding-right: 5px;
-}
-
 .personal-info-border {
     border-color: gray;
     border-style: solid;
@@ -31,21 +27,21 @@
     border-width: thin;
 }
 
-.manual-entry {
-    background: none;
-    border: none;
-    text-decoration: underline;
-    cursor: pointer;
-}
+.custom-grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+  }
 
-.manual-entry:link {
-    color: red;
-}
+  .custom-grid-item {
+    padding: 20px;
+    font-size: 30px;
+  }
 
-.manual-entry:visited {
-    color: purple
-}
-
-.manual-entry:hover {
-    color: blue;
-}
+@media only screen and (max-width: 500px) {
+    .custom-grid-container {
+      display: grid;
+      grid-template-columns: auto;
+      padding: 10px;
+    }
+  }

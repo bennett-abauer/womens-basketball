@@ -16,7 +16,8 @@ class RecruitView extends React.Component {
         this.state = {
             allRecruitData: [],
             schoolInfo: [],
-            selectedRecruits: [],
+            selectedRecruit: [],
+            recruitFilter: 0,
             positionFilter: 0,
             levelFilter: 0,
             statusFilter: 0,
@@ -27,13 +28,15 @@ class RecruitView extends React.Component {
 
     handleChange = event => {
         this.setState({ checkboxChecked: !this.state.checkboxChecked })
-        if (this.state.checkboxChecked === true) {
-            const selectedRecruit = event.target.value
-            this.setState({ selectedRecruits: this.state.allRecruitData.filter(recruit => 
-                recruit.recruit_id == selectedRecruit) });
-        } else if (this.state.checkboxChecked === false) {
-            this.setState({ selectedRecruits: [] });
-        }
+        this.setState({ recruitFilter: event.target.value }, function () {
+        (true === this.state.checkboxChecked) ? 
+            this.setState({ selectedRecruit: this.state.allRecruitData.filter(recruit =>
+                recruit.recruit_id == this.state.recruitFilter) }, function () {
+                    console.log(this.state.selectedRecruit)
+                })
+            :
+            this.setState({ selectedRecruit: [] })
+        });
     }
 
     positionChanged = event => {
@@ -107,7 +110,6 @@ class RecruitView extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log(this.state.filteredRecruits);
     }
 
     render() {

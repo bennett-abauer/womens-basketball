@@ -121,9 +121,10 @@ class RecruitView extends React.Component {
                     <StatusDropDown onChange={ this.statusChanged } />
                 </div>
                 <TabView className="tab-view"
-                            handleChange={ this.handleChange }
-                            recruits={ this.state.filteredRecruits }
-                            schools={ this.state.schoolInfo } />
+                         handleChange={ this.handleChange }
+                         recruits={ this.state.filteredRecruits }
+                         schools={ this.state.schoolInfo }
+                         selectedRecruit={ this.state.selectedRecruit } />
             </div>
         );
     }

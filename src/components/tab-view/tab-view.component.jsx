@@ -1,17 +1,16 @@
 import React from "react";
 import { Tabs, Tab } from "react-tab-view";
 
-import RecruitTable from "../table-view/table-view-recruits.component";
-import StatsTable from "../table-view/table-view-stats.component";
-import AcademicsTable from "../table-view/table-view-academics.component";
-import SchoolsTable from "../table-view/table-view-school-info.component";
+import StatsView from "../form-view/stats-view.component";
+import AcademicsView from "../form-view/academics-view.component";
+import SchoolsTable from "../table-view/school-table.component";
 
 import "../table-view/table-view.styles.scss";
 import "./tab-view.styles.scss";
 
 const headers = ["RECRUITS", "STATS", "ACADEMICS", "SCHOOL INFO"]
 
-const TabView = ({ handleChange, recruits, schools }) => (
+const TabView = ({ handleChange, recruits, schools, selectedRecruit }) => (
     <Tabs className="tabs" headers={ headers }>
         <Tab className="tab-view">
             <div className="table">
@@ -48,10 +47,10 @@ const TabView = ({ handleChange, recruits, schools }) => (
             </div>
         </Tab>
         <Tab className="tab-view">
-            <StatsTable cellInfo={ recruits } />
+            <StatsView recruitInfo={ selectedRecruit } />
         </Tab>
         <Tab className="tab-view">
-            <AcademicsTable cellInfo={ recruits } />
+            <AcademicsView recruitInfo={ selectedRecruit } />
         </Tab>
         <Tab className="tab-view">
             <SchoolsTable cellInfo={ schools }/>

@@ -10,7 +10,7 @@ import "./tab-view.styles.scss";
 
 const headers = ["RECRUITS", "STATS", "ACADEMICS", "SCHOOL INFO"]
 
-const TabView = ({ handleChange, recruits, schools, selectedRecruit }) => (
+const TabView = ({ handleClick, handleSelect, recruits, schools, selectedRecruit }) => (
     <Tabs className="tabs" headers={ headers }>
         <Tab className="tab-view">
             <div className="table">
@@ -31,7 +31,7 @@ const TabView = ({ handleChange, recruits, schools, selectedRecruit }) => (
                                     <td>
                                         <input type="checkbox"
                                                value={ cell.recruit_id }
-                                               onChange={ handleChange } />
+                                               onChange={ handleSelect } />
                                     </td>
                                     <td>{ cell.last_name }</td>
                                     <td>{ cell.first_name }</td>
@@ -47,10 +47,10 @@ const TabView = ({ handleChange, recruits, schools, selectedRecruit }) => (
             </div>
         </Tab>
         <Tab className="tab-view">
-            <StatsView recruitInfo={ selectedRecruit } />
+            <StatsView selectedRecruit={ selectedRecruit } />
         </Tab>
         <Tab className="tab-view">
-            <AcademicsView recruitInfo={ selectedRecruit } />
+            <AcademicsView selectedRecruit={ selectedRecruit } />
         </Tab>
         <Tab className="tab-view">
             <SchoolsTable cellInfo={ schools }/>

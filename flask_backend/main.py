@@ -23,6 +23,11 @@ def viewRecruits():
 def schoolTableView():
     return database_access.school_info()
 
+@app.route("/updateRecruit", methods=["POST"])
+def updateRecruit():
+    data = request.json()
+    print(data)
+
 if __name__ == "__main__":
 #    viewRecruits()
     port = int(os.environ.get("PORT", 5000))

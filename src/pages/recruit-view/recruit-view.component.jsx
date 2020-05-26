@@ -16,27 +16,25 @@ class RecruitView extends React.Component {
         this.state = {
             allRecruitData: [],
             schoolInfo: [],
-            selectedRecruit: [],
             recruitFilter: 0,
             positionFilter: 0,
             levelFilter: 0,
             statusFilter: 0,
             filteredRecruits: [],
+            selectedRecruit: {},
             checkboxChecked: false
         }
     }
 
-    handleChange = event => {
+    handleSelect = event => {
         this.setState({ checkboxChecked: !this.state.checkboxChecked })
-        this.setState({ recruitFilter: event.target.value }, function () {
-        (true === this.state.checkboxChecked) ? 
-            this.setState({ selectedRecruit: this.state.allRecruitData.filter(recruit =>
-                recruit.recruit_id == this.state.recruitFilter) }, function () {
-                    console.log(this.state.selectedRecruit)
-                })
-            :
-            this.setState({ selectedRecruit: [] })
-        });
+        this.setState({ recruitFilter: event.target.value }, function() {
+            (true === this.state.checkboxChecked) ?
+                this.setState({ selectedRecruit: (this.state.allRecruitData.filter(recruit =>
+                    recruit.recruit_id == this.state.recruitFilter))[0] })
+                :
+                this.setState({ selectedRecruit: {} })
+        })
     }
 
     positionChanged = event => {
@@ -109,9 +107,6 @@ class RecruitView extends React.Component {
         });
     }
 
-    componentDidUpdate() {
-    }
-
     render() {
         return(
             <div className="grid-container">
@@ -121,7 +116,7 @@ class RecruitView extends React.Component {
                     <StatusDropDown onChange={ this.statusChanged } />
                 </div>
                 <TabView className="tab-view"
-                         handleChange={ this.handleChange }
+                         handleSelect={ this.handleSelect }
                          recruits={ this.state.filteredRecruits }
                          schools={ this.state.schoolInfo }
                          selectedRecruit={ this.state.selectedRecruit } />

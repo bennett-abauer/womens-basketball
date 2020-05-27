@@ -8,7 +8,7 @@ import "./form-view.styles.scss";
 
 class StatsView extends React.Component {
     state = {
-        recruit_id: `${ this.props.selectedRecruit.recruit_id }`,
+        recruit_id: "",
         height: "",
         offensive_rebounds: "",
         defensive_rebounds: "",
@@ -23,9 +23,7 @@ class StatsView extends React.Component {
         games_started: "",
         minutes_played: "",
         personal_fouls: "",
-        level_id: "",
         level_name: "",
-        position_id: "",
         position_name: "",
         notes: ""
     }
@@ -39,9 +37,11 @@ class StatsView extends React.Component {
     handleClick = event => {
         event.preventDefault();
 
-        axios.post("/updateRecruits", this.state)
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
+        this.setState({ recruit_id: `${ this.props.selectedRecruit.recruit_id }` }, function() {
+            axios.post("/updateRecruit", this.state)
+            .then(response => console.log(response.status))
+            .catch(error => console.log(error));
+        })
     }
 
     render() {

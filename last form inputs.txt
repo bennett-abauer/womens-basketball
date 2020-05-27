@@ -1,0 +1,45 @@
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <div className="three-column-grid-container">
+                <form className="position">
+                        <FormInput
+                            type="text"
+                            name="position"
+                            value={ position }
+                            onChange={ this.handleChange }
+                            label="Position" />
+                    </form>
+                    <form className="team-level">
+                        <FormInput
+                            type="text"
+                            name="teamLevel"
+                            value={ teamLevel }
+                            onChange={ this.handleChange }
+                            label="Which Level" />
+                    </form>
+                    <form className="current-status">
+                        <FormInput
+                            type="text"
+                            name="currentStatus"
+                            value={ currentStatus }
+                            onChange={ this.handleChange }
+                            label="Current Recruitment Status" />
+                    </form>
+                    <form className="notes">
+                        <FormInput
+                            type="text"
+                            name="notes"
+                            value={ notes }
+                            onChange={ this.handleChange }
+                            label="Notes" />
+                    </form>
+                </div>
+            </div>

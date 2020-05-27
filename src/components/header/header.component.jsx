@@ -16,9 +16,12 @@ const Header = ({ currentUser }) => (
             <Link className="option" to="/">
                 HOME
             </Link>
-            <Link className="option" to="/recruitment-page">
-                APPLY NOW
-            </Link>
+            {
+                currentUser ?
+                <Link className="option" to="/coach-recruitment-page">COACH APPLY NOW</Link>
+                :
+                <Link className="option" to="/recruitment-page">APPLY NOW</Link>
+            }
             {
                 currentUser ?
                 (<Link className="option" to="/recruit-view">VIEW RECRUITS</Link>)

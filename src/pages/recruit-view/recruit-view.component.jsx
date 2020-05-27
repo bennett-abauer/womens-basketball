@@ -5,6 +5,7 @@ import PositionDropDown from "../../components/drop-down-lists/position-drop-dow
 import LevelDropDown from "../../components/drop-down-lists/level-drop-down.component";
 import StatusDropDown from "../../components/drop-down-lists/status-drop-down.component";
 import TabView from "../../components/tab-view/tab-view.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "./recruit-view.styles.scss";
@@ -16,24 +17,45 @@ class RecruitView extends React.Component {
         this.state = {
             allRecruitData: [],
             schoolInfo: [],
-            selectedRecruits: [],
+            recruitFilter: 0,
             positionFilter: 0,
             levelFilter: 0,
             statusFilter: 0,
             filteredRecruits: [],
+            selectedRecruit: {},
             checkboxChecked: false
         }
     }
 
-    handleChange = event => {
-        this.setState({ checkboxChecked: !this.state.checkboxChecked })
-        if (this.state.checkboxChecked === true) {
-            const selectedRecruit = event.target.value
-            this.setState({ selectedRecruits: this.state.allRecruitData.filter(recruit => 
-                recruit.recruit_id == selectedRecruit) });
-        } else if (this.state.checkboxChecked === false) {
-            this.setState({ selectedRecruits: [] });
+    handleClick = event => {
+        event.preventDefault();
+
+        if (0 === this.state.recruitFilter) {
+            alert("No prospect selected.");
         }
+        else {
+            axios.post("/deleteRecruit", { recruit: this.state.recruitFilter })
+            .then(response => {
+                if (200 === response.status) {
+                    alert("Prospect successfully deleted from database.");
+                    window.location.reload(true);
+                }
+                else {
+                    alert("An exception occured.\nPlease try again later.");
+                }
+            })
+        }
+    }
+
+    handleSelect = event => {
+        this.setState({ checkboxChecked: !this.state.checkboxChecked })
+        this.setState({ recruitFilter: event.target.value }, function() {
+            (true === this.state.checkboxChecked) ?
+                this.setState({ selectedRecruit: (this.state.allRecruitData.filter(recruit =>
+                    recruit.recruit_id == this.state.recruitFilter))[0] })
+                :
+                this.setState({ selectedRecruit: {} })
+        })
     }
 
     positionChanged = event => {
@@ -106,10 +128,6 @@ class RecruitView extends React.Component {
         });
     }
 
-    componentDidUpdate() {
-        console.log(this.state.filteredRecruits);
-    }
-
     render() {
         return(
             <div className="grid-container">
@@ -117,11 +135,14 @@ class RecruitView extends React.Component {
                     <PositionDropDown onChange={ this.positionChanged } />
                     <LevelDropDown onChange={ this.levelChanged } />
                     <StatusDropDown onChange={ this.statusChanged } />
+                    <br />
+                    <CustomButton onClick={ this.handleClick }>DELETE PROSPECT</CustomButton>
                 </div>
                 <TabView className="tab-view"
-                            handleChange={ this.handleChange }
-                            recruits={ this.state.filteredRecruits }
-                            schools={ this.state.schoolInfo } />
+                         handleSelect={ this.handleSelect }
+                         recruits={ this.state.filteredRecruits }
+                         schools={ this.state.schoolInfo }
+                         selectedRecruit={ this.state.selectedRecruit } />
             </div>
         );
     }

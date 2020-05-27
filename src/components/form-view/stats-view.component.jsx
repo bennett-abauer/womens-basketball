@@ -37,9 +37,17 @@ class StatsView extends React.Component {
     handleClick = event => {
         event.preventDefault();
 
-        this.setState({ recruit_id: `${ this.props.selectedRecruit.recruit_id }` }, function() {
+        this.setState({ recruit_id: `${ this.props.selectedRecruit.recruit_id }`}, function() {
             axios.post("/updateRecruit", this.state)
-            .then(response => console.log(response.status))
+            .then(response => {
+                if (200 === response.status) {
+                    alert("Recruit data updated.\nPress OK to refresh page.");
+                    window.location.reload(true);
+                }
+                else {
+                    alert("An exception occured.\nPlease review your changes and try again.")
+                }
+            })
             .catch(error => console.log(error));
         })
     }

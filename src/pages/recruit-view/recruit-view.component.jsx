@@ -5,6 +5,7 @@ import PositionDropDown from "../../components/drop-down-lists/position-drop-dow
 import LevelDropDown from "../../components/drop-down-lists/level-drop-down.component";
 import StatusDropDown from "../../components/drop-down-lists/status-drop-down.component";
 import TabView from "../../components/tab-view/tab-view.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "./recruit-view.styles.scss";
@@ -23,6 +24,26 @@ class RecruitView extends React.Component {
             filteredRecruits: [],
             selectedRecruit: {},
             checkboxChecked: false
+        }
+    }
+
+    handleClick = event => {
+        event.preventDefault();
+
+        if (0 === this.state.recruitFilter) {
+            alert("No prospect selected.");
+        }
+        else {
+            axios.post("/deleteRecruit", { recruit: this.state.recruitFilter })
+            .then(response => {
+                if (200 === response.status) {
+                    alert("Prospect successfully deleted from database.");
+                    window.location.reload(true);
+                }
+                else {
+                    alert("An exception occured.\nPlease try again later.");
+                }
+            })
         }
     }
 
@@ -114,6 +135,8 @@ class RecruitView extends React.Component {
                     <PositionDropDown onChange={ this.positionChanged } />
                     <LevelDropDown onChange={ this.levelChanged } />
                     <StatusDropDown onChange={ this.statusChanged } />
+                    <br />
+                    <CustomButton onClick={ this.handleClick }>DELETE PROSPECT</CustomButton>
                 </div>
                 <TabView className="tab-view"
                          handleSelect={ this.handleSelect }

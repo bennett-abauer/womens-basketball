@@ -34,7 +34,7 @@ class RecruitView extends React.Component {
             alert("No prospect selected.");
         }
         else {
-            axios.post("/deleteRecruit", { recruit: this.state.recruitFilter })
+            axios.post("/deleteRecruit", { recruit_id: this.state.recruitFilter })
             .then(response => {
                 if (200 === response.status) {
                     alert("Prospect successfully deleted from database.");

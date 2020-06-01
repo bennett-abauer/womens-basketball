@@ -41,6 +41,35 @@ def school_info():
 
     return json.dumps(results)
 
+def new_recruit(recruit):
+    CONN = pg2.connect(database="basketball-recruitment", user="postgres", password=9206)
+    CUR = CONN.cursor(cursor_factory=RealDictCursor)
+
+    recruit_key_list = []
+    recruit_value_list = []
+    for key in recruit.keys():
+        recruit_key_list.append(key)
+        recruit_key_list.append(", ")
+        if key == "first_name" or key == "last_name" or key == "address" or key == "phone_number" or key == "email":
+            recruit_value_list.append("'" + recruit[key] + "'")
+            recruit_value_list.append(", ")
+        else:
+            recruit_value_list.append(recruit[key])
+            recruit_value_list.append(", ")
+
+    recruit_key_list.pop()
+    recruit_value_list.pop()
+
+    sql_columns_string = "".join(recruit_key_list)
+    sql_values_string = "".join(recruit_value_list)
+
+    query_sql = f'''INSERT INTO recruits ({sql_columns_string}) VALUES ({sql_values_string});'''
+    print(query_sql)
+    
+    CUR.execute(query_sql)
+    CONN.commit()
+    CONN.close()
+
 def update_recruit(recruit):
     CONN = pg2.connect(database="basketball-recruitment", user="postgres", password=9206)
     CUR = CONN.cursor(cursor_factory=RealDictCursor)
@@ -61,9 +90,23 @@ def update_recruit(recruit):
     where_clause = "".join(primary_key)
 
     query_sql = f'''UPDATE recruits SET {query_string} WHERE {where_clause};'''
-
-    print(query_sql)
     
+    CUR.execute(query_sql)
+    CONN.commit()
+    CONN.close()
+
+def delete_recruit(recruit):
+    CONN = pg2.connect(database="basketball-recruitment", user="postgres", password=9206)
+    CUR = CONN.cursor(cursor_factory=RealDictCursor)
+
+    primary_key = []
+    for key in recruit.keys():
+        if recruit[key] != "0":
+            primary_key.append(key + " = " + recruit[key])
+    query_string = "".join(primary_key)
+    
+    query_sql = f'''DELETE FROM recruits WHERE {query_string};'''
+
     CUR.execute(query_sql)
     CONN.commit()
     CONN.close()

@@ -33,7 +33,10 @@ class FormView extends React.Component {
             grad_year: "",
             act_score: "",
             gpa: "",
-            school_name: ""
+            level_id: "4",
+            position_id: "6",
+            current_status: "1",
+            school_id: "1"
         }
     }
 
@@ -63,17 +66,17 @@ class FormView extends React.Component {
         const statNames = ["height", "offensive_rebounds", "defensive_rebounds", "free_throw_prcntg",
                            "three_point_prcntg", "two_point_prcntg", "assists", "turnovers", "steals", "blocks",
                            "games_played", "games_started", "minutes_played", "personal_fouls"]
-        const academicNames = ["grad_year", "act_score", "gpa", "school_name"]
+        const academicNames = ["grad_year", "act_score", "gpa"]
         const contactInfoLabels = ["First Name", "Last Name", "Address", "Phone Number", "Email"]
-        const statLabels = ["Height: Feet", "Height: Inches", "Offensive Rebounds", "Defensive Rebounds",
+        const statLabels = ["Height: Centimeters", "Offensive Rebounds", "Defensive Rebounds",
                             "Free Throw %", "Three Point %", "Two Point %", "Assists", "Turnovers", "Steals",
                             "Blocks", "Games Played", "Games Started", "Minutes Played", "Personal Fouls"]
-        const academicLabels = ["Grad Year", "ACT Score", "GPA", "School Name"]
+        const academicLabels = ["Grad Year", "ACT Score", "GPA"]
         const contactInfoValues = [this.state.first_name, this.state.last_name, this.state.address, this.state.phone_number, this.state.email]
         const statValues = [this.state.height, this.state.offensive_rebounds, this.state.defensive_rebounds, this.state.free_throw_prcntg,
                             this.state.three_point_prcntg, this.state.two_point_prcntg, this.state.assists, this.state.turnovers, this.state.steals,
                             this.state.blocks, this.state.games_played, this.state.games_started, this.state.minutes_played, this.state.personal_fouls]
-        const academicValues = [this.state.grad_year, this.state.act_score, this.state.gpa, this.state.school_name]
+        const academicValues = [this.state.grad_year, this.state.act_score, this.state.gpa]
         const contactFormFields = []
         const statFormFields = []
         const academicFormFields = []

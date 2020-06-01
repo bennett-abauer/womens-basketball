@@ -23,11 +23,23 @@ def viewRecruits():
 def schoolTableView():
     return database_access.school_info()
 
+@app.route("/newRecruit", methods=["POST"])
+def newRecruit():
+    data = request.get_json()
+    database_access.new_recruit(data)
+    return "recruit prospect created"
+
 @app.route("/updateRecruit", methods=["POST"])
 def updateRecruit():
     data = request.get_json()
     database_access.update_recruit(data)
-    return "recruit data updated"
+    return "recruit prospect updated"
+
+@app.route("/deleteRecruit", methods=["POST"])
+def deleteRecruit():
+    data = request.get_json()
+    database_access.delete_recruit(data)
+    return "recruit prospect deleted"
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
